@@ -3,6 +3,9 @@ import { PropertyCard } from "@/components/property-card";
 import { CurrencySwitcher } from "@/components/currency-switcher";
 import { ThemeToggle } from "@/components/theme-toggle";
 
+import { Suspense } from "react";
+import { PropertyGridSkeleton } from "@/components/property-skeleton";
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
@@ -28,11 +31,13 @@ export default function Home() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {PROPERTIES.map((property) => (
-            <PropertyCard key={property.id} property={property} />
-          ))}
-        </div>
+        <Suspense fallback={<PropertyGridSkeleton />}>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {PROPERTIES.map((property, index) => (
+              <PropertyCard key={property.id} property={property} index={index} />
+            ))}
+          </div>
+        </Suspense>
       </main>
 
       <footer className="py-12 border-t mt-12 bg-muted/30">

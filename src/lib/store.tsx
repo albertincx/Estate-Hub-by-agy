@@ -1,8 +1,8 @@
 "use client"
 
 import React, { createContext, useContext, useState, useEffect } from "react";
-import { setCookie } from "cookies-next";
-import { CurrencyCode, DEFAULT_CURRENCY, CURRENCY_COOKIE_NAME } from "./constants";
+import { CurrencyCode, DEFAULT_CURRENCY } from "./constants";
+import { setPreferredCurrency } from "./actions";
 
 interface CurrencyContextType {
     currencyCode: CurrencyCode;
@@ -20,9 +20,9 @@ export function CurrencyProvider({
 }) {
     const [currencyCode, setCurrencyCode] = useState<CurrencyCode>(initialCurrency);
 
-    const setCurrency = (code: CurrencyCode) => {
+    const setCurrency = async (code: CurrencyCode) => {
         setCurrencyCode(code);
-        setCookie(CURRENCY_COOKIE_NAME, code, { maxAge: 60 * 60 * 24 * 30 }); // 30 days
+        await setPreferredCurrency(code);
     };
 
     return (

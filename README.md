@@ -4,11 +4,13 @@ A simple Next.js application showing a list of properties with a real-time curre
 
 ## Features
 
-- **Property Listings**: 6 hardcoded property cards with details and images.
-- **Currency Switcher**: Toggle between THB, USD, EUR, and RUB.
-- **SSR Compatible**: Preferences are stored in cookies to prevent theme/currency flickering.
-- **Responsive Design**: Mobile-friendly grid layout using Tailwind CSS 4.
-- **Dark Mode**: Supports light and dark themes.
+- **Property Listings**: 6 property cards with local image placeholders and detailed info.
+- **Currency Switcher**: Toggle between THB, USD, EUR, and RUB with Server Actions persistence.
+- **SSR Compatible**: Flicker-free initial rendering using server-side cookie reading.
+- **Loading UI**: Integrated Suspense with skeleton loaders for better UX.
+- **Error Handling**: Custom Error and Not Found pages.
+- **Responsive Design**: Modern grid layout using Tailwind CSS 4 with smooth transitions.
+- **Dark Mode**: Fully supports light and dark themes.
 
 ## Tech Stack
 

@@ -1,4 +1,4 @@
-"use client"
+import React from "react";
 
 import Image from "next/image";
 import { Property } from "@/lib/data";
@@ -8,16 +8,18 @@ import { Maximize2, MapPin } from "lucide-react";
 
 interface PropertyCardProps {
     property: Property;
+    index?: number;
 }
 
-export function PropertyCard({ property }: PropertyCardProps) {
+export function PropertyCard({ property, index }: PropertyCardProps) {
     return (
-        <Card className="overflow-hidden flex flex-col h-full hover:shadow-lg transition-shadow duration-300">
+        <Card className="overflow-hidden flex flex-col h-full hover:shadow-xl transition-all duration-500 ease-out hover:-translate-y-1 group border-muted/50 hover:border-primary/20">
             <div className="relative aspect-[4/3] w-full overflow-hidden">
                 <Image
                     src={property.image}
                     alt={property.name}
                     fill
+                    priority={index === 0}
                     className="object-cover transition-transform duration-300 hover:scale-105"
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                 />
