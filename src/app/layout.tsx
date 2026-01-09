@@ -23,19 +23,15 @@ export const metadata: Metadata = {
   }
 };
 
-import { cookies } from "next/headers";
 import { ThemeProvider } from "@/components/theme-provider";
 import { CurrencyProvider } from "@/lib/store";
-import { DEFAULT_CURRENCY, CURRENCY_COOKIE_NAME, CurrencyCode } from "@/lib/constants";
+import { DEFAULT_CURRENCY } from "@/lib/constants";
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const cookieStore = await cookies();
-  const initialCurrency = (cookieStore.get(CURRENCY_COOKIE_NAME)?.value as CurrencyCode) || DEFAULT_CURRENCY;
-
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -47,7 +43,7 @@ export default async function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <CurrencyProvider initialCurrency={initialCurrency}>
+          <CurrencyProvider initialCurrency={DEFAULT_CURRENCY}>
             {children}
           </CurrencyProvider>
         </ThemeProvider>
