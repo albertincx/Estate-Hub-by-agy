@@ -1,36 +1,39 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# EstateHub - Property List with Currency Switcher
+
+A simple Next.js application showing a list of properties with a real-time currency switcher.
+
+## Features
+
+- **Property Listings**: 6 hardcoded property cards with details and images.
+- **Currency Switcher**: Toggle between THB, USD, EUR, and RUB.
+- **SSR Compatible**: Preferences are stored in cookies to prevent theme/currency flickering.
+- **Responsive Design**: Mobile-friendly grid layout using Tailwind CSS 4.
+- **Dark Mode**: Supports light and dark themes.
+
+## Tech Stack
+
+- **Framework**: [Next.js 16](https://nextjs.org/) (App Router)
+- **Styling**: [Tailwind CSS 4](https://tailwindcss.com/)
+- **UI Components**: [Shadcn UI](https://ui.shadcn.com/)
+- **State Persistence**: Cookies (via `cookies-next`)
 
 ## Getting Started
 
-First, run the development server:
+1. **Install dependencies**:
+   ```bash
+   npm install
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+2. **Run the development server**:
+   ```bash
+   npm run dev
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. **Open the application**:
+   Navigate to [http://localhost:3000](http://localhost:3000).
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Implementation Details
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- **Exchange Rates**: Currencies are converted using static rates defined in `src/lib/constants.ts`.
+- **Formatting**: Prices are formatted using `Intl.NumberFormat` based on the selected currency's locale.
+- **Persistence**: Selected currency is stored in a cookie (`preferred_currency`) and read on the server to provide flicker-free initial rendering.
