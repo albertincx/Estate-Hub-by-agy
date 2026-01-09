@@ -16,7 +16,7 @@ export function CurrencySwitcher() {
     return (
         <Select
             value={currencyCode}
-            onValueChange={(value) => setCurrency(value as CurrencyCode)}
+            onValueChange={(value: string) => setCurrency(value as CurrencyCode)}
         >
             <SelectTrigger className="w-[100px] bg-background">
                 <SelectValue placeholder="Валюта" />

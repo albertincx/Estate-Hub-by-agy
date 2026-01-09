@@ -39,3 +39,19 @@ A simple Next.js application showing a list of properties with a real-time curre
 - **Exchange Rates**: Currencies are converted using static rates defined in `src/lib/constants.ts`.
 - **Formatting**: Prices are formatted using `Intl.NumberFormat` based on the selected currency's locale.
 - **Persistence**: Selected currency is stored in a cookie (`preferred_currency`) and read on the server to provide flicker-free initial rendering.
+
+## Deployment
+
+This project is optimized for deployment on **Vercel**.
+
+### Instructions for Private Repositories:
+1. Push your code to a private repository on GitHub, GitLab, or Bitbucket.
+2. Log in to the [Vercel Dashboard](https://vercel.com/new).
+3. Import your project from your git provider.
+4. Vercel will automatically detect Next.js settings.
+5. Click **Deploy**.
+
+For detailed workflow steps, run:
+```bash
+/deploy
+```
